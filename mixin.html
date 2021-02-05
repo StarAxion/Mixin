@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Mixin</title>
+</head>
+
+<body>
+	<script>
+
+		var obj1 = {
+			a: 1
+		};
+
+		var obj2 = {
+			b: 2
+		};
+
+		var obj3 = {
+			c: 3
+		};
+
+		function mixin() {
+			var result = {},
+				argsSize = arguments.length,
+				i,
+				obj,
+				keys,
+				keysSize,
+				k;
+
+			for (i = 0; i < argsSize; i += 1) {
+				obj = arguments[i];
+				keys = Object.keys(obj);
+				keysSize = keys.length;
+
+				for (k = 0; k < keysSize; k += 1) {
+					result[keys[k]] = obj[keys[k]];
+				}
+			}
+
+			return result;
+		}
+
+		console.log(mixin(obj1, obj2, obj3)); // {a: 1, b: 2, c: 3}
+
+	</script>
+</body>
+
+</html>
